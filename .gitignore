@@ -7,3 +7,4 @@
 /deliveries/trunk/implements/CoYqlp/CoYqlp.WepApp/bin
 /deliveries/trunk/implements/CoYqlp/CoYqlp.WepApp/obj
 *.user
+*.log

@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://rest.esms.vn/MainService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" />
+  <xs:import schemaLocation="http://rest.esms.vn/MainService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/Message" />
+  <xs:import schemaLocation="http://rest.esms.vn/MainService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/AdvertisingAPI" />
+  <xs:import schemaLocation="http://rest.esms.vn/MainService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Helpers" />
+  <xs:element name="GetMemberInfomation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMemberInfomationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="GetMemberInfomationResult" nillable="true" type="q1:MemberModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Content" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleMessageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="SendMultipleMessageResult" nillable="true" type="q2:SmsResultModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBrandnameList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBrandnameListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="GetBrandnameListResult" nillable="true" type="q3:BrandnameListModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleMessage_V2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.microsoft.com/Message" name="EmailData" type="q4:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleMessage_V2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="SendMultipleMessage_V2Result" nillable="true" type="q5:SmsResultModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleMessageBrandname">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Content" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BrandnameCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SmsType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SendDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SandBox" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleMessageBrandnameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="SendMultipleMessageBrandnameResult" nillable="true" type="q6:SmsResultModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleMessage_V4_get">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Content" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IsUnicode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Brandname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SmsType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Sandbox" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IsFlash" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Priority" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RequestId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SendDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TrackLink" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleMessage_V4_getResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="SendMultipleMessage_V4_getResult" nillable="true" type="q7:SmsResultModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleMessage_V4_post">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.microsoft.com/Message" name="SmsData" type="q8:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleMessage_V4_postResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="SendMultipleMessage_V4_postResult" nillable="true" type="q9:SmsResultModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleMessage_V4_post_json">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/AdvertisingAPI" minOccurs="0" name="rData" nillable="true" type="q10:MainService.api" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleMessage_V4_post_jsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="SendMultipleMessage_V4_post_jsonResult" nillable="true" type="q11:SmsResultModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSmsReceiverStatus_get">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RefId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SmsId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSmsReceiverStatus_getResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="GetSmsReceiverStatus_getResult" nillable="true" type="q12:SmsReceiver" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleMessage_V2_get">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Content" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IsUnicode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Brandname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SmsType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Sandbox" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Priority" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RequestId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SendDate" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleMessage_V2_getResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="SendMultipleMessage_V2_getResult" nillable="true" type="q13:SmsResultModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleSMSBrandname">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.microsoft.com/Message" name="SmsData" type="q14:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleSMSBrandnameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="SendMultipleSMSBrandnameResult" nillable="true" type="q15:SmsResultModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSendStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SmsID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSendStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="GetSendStatusResult" nillable="true" type="q16:SmsStatusResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetSwitchForeverSMSNhanh">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetSwitchForeverSMSNhanhResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="ResetSwitchForeverSMSNhanhResult" nillable="true" type="q17:MemberRegisterResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActiveUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CodeConfirm" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActiveUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="ActiveUserResult" nillable="true" type="q18:MemberRegisterResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCustomerByGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GroupId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CurrentPage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RecordPerPage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCustomerByGroupResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="GetCustomerByGroupResult" nillable="true" type="q19:GetCustomerByGroupResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCustomerByPhone">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCustomerByPhoneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="GetCustomerByPhoneResult" nillable="true" type="q20:CustomerResultModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGroupList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGroupListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="GetGroupListResult" nillable="true" type="q21:GroupListResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddNewGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddNewGroupResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="AddNewGroupResult" nillable="true" type="q22:ExecuteResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleEmail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.microsoft.com/Message" name="EmailData" type="q23:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleEmailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SendMultipleEmailResult" nillable="true" type="tns:EmailResponseModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="EmailResponseModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodeResult" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SendResult" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmailResponseModel" nillable="true" type="tns:EmailResponseModel" />
+  <xs:element name="SendMultipleEmailv2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.microsoft.com/Message" name="EmailData" type="q24:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleEmailv2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SendMultipleEmailv2Result" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSmsStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.microsoft.com/Message" name="SmsData" type="q25:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSmsStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="GetSmsStatusResult" nillable="true" type="q26:SmsStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSmsReceiverStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.microsoft.com/Message" name="SmsData" type="q27:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSmsReceiverStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="GetSmsReceiverStatusResult" nillable="true" type="q28:SmsReceiver" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendBrandnameSMS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.microsoft.com/Message" name="SmsData" type="q29:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendBrandnameSMSResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="SendBrandnameSMSResult" nillable="true" type="q30:SmsReceiver" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updatesmsstatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="REFERENCE" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="STATUS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DESTINATION" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TIMESTAMP" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="REASON" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OPERATOR" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updatesmsstatusResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SignUp">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.microsoft.com/Message" name="UserData" type="q31:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SignUpResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="SignUpResult" nillable="true" type="q32:MemberRegisterResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InternationalSmsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="msisdn" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="to" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="network_code" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="messageId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="price" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="scts" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="err_code" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="message_timestamp" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InternationalSmsResponseResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CPRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sender" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="keyword" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="servicesnumber" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="authenkey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cpid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="smsid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="time" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CPRequestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Helpers" minOccurs="0" name="CPRequestResult" nillable="true" type="q33:ClientResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CloneSendIndividualSMS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Request" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TypeOfSMS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Brandname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CloneSendIndividualSMSResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="CloneSendIndividualSMSResult" nillable="true" type="q34:CloneStatusResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CloneSendBulkSMS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Request" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TypeOfSMS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Brandname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CloneSendBulkSMSResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="CloneSendBulkSMSResult" nillable="true" type="q35:CloneStatusResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CloneSendBulkSMSX">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Request" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TypeOfSMS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Brandname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CustomerID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CloneSendBulkSMSXResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="CloneSendBulkSMSXResult" nillable="true" type="q36:CloneStatusResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CloneGetSentStatusDetail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SendID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="refId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CloneGetSentStatusDetailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="CloneGetSentStatusDetailResult" nillable="true" type="q37:CloneSmsDetails" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChargeByMobileCard">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.microsoft.com/Message" name="Data" type="q38:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChargeByMobileCardResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="ChargeByMobileCardResult" nillable="true" type="q39:MobileChargeResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendViettelApi">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Request" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Brandname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendViettelApiResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="SendViettelApiResult" nillable="true" type="q40:SendViettelResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendViettelSingle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendViettelSingleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="SendViettelSingleResult" nillable="true" type="q41:SendViettelResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleSMS_v3">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Content" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IsUnicode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Brandname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SmsType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Sandbox" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleSMS_v3Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="SendMultipleSMS_v3Result" nillable="true" type="q42:SmsResultModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBrandnameStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SMSID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBrandnameStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="GetBrandnameStatusResult" nillable="true" type="q43:SmsCloneResultModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSmsReceiverStatus_V2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SMSID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecretKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSmsReceiverStatus_V2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="GetSmsReceiverStatus_V2Result" nillable="true" type="q44:SmsReceiver" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendViettelTest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Content" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendViettelTestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SendViettelTestResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WaitThenReturnString">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="waitMilliSeconds" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WaitThenReturnStringResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="WaitThenReturnStringResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleMessage_V4">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.microsoft.com/Message" name="SmsData" type="q45:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMultipleMessage_V4Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="SendMultipleMessage_V4Result" nillable="true" type="q46:SmsResultModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestMemcached">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestMemcachedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TestMemcachedResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSmsSentData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.microsoft.com/Message" name="ConditionData" type="q47:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSmsSentDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="GetSmsSentDataResult" nillable="true" type="q48:SmsSentResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendTmpData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Content" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IsUnicode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Source" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendTmpDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.microsoft.com/Message" name="SendTmpDataResult" type="q49:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CloneBrandnameProcess">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Task" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BrandName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Secretkey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="NewBrandname" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CloneBrandnameProcessResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://schemas.microsoft.com/Message" name="CloneBrandnameProcessResult" type="q50:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelSMS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.microsoft.com/Message" name="SMSData" type="q51:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelSMSResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="CancelSMSResult" nillable="true" type="q52:SmsResultModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SignUpTeraapp">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q53="http://schemas.microsoft.com/Message" name="UserData" type="q53:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SignUpTeraappResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="SignUpTeraappResult" nillable="true" type="q54:MemberRegisterResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyCall">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Content" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Secretkey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyCallResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q55="http://schemas.microsoft.com/Message" name="VerifyCallResult" type="q55:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WebCall_post">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="http://schemas.microsoft.com/Message" name="SmsData" type="q56:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WebCall_postResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="WebCall_postResult" nillable="true" type="q57:MemberCallResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReceiveBankingSMS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sender" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReceiveBankingSMSResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ReceiveBankingSMSResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HubspotSMS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/AdvertisingAPI" minOccurs="0" name="SmsData" nillable="true" type="q58:MainService.HubspotData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HubspotSMSResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/AdvertisingAPI.Model" minOccurs="0" name="HubspotSMSResult" nillable="true" type="q59:HubspotResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

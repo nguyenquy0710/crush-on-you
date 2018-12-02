@@ -1,6 +1,95 @@
+USE master
+GO
 --CREATE DATABASE CoYDB
 --GO
 USE CoYDB
 GO
 SET DATEFORMAT DMY
 GO
+
+-- table CoY_Roles
+CREATE TABLE [dbo].[CoY_Roles]
+(
+	[Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[Name] NVARCHAR(256) NOT NULL,
+	[DateCreate] DATETIME NULL DEFAULT(GETDATE())
+)
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [CoY_RoleNameIndex] ON [dbo].[CoY_Roles] ([Name]) ON [PRIMARY]
+GO
+
+-- table CoY_Users
+CREATE TABLE [dbo].[CoY_Users]
+(
+	[Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[UserName] NVARCHAR(256) NOT NULL,
+	[Email] NVARCHAR(256) NULL,
+	[EmailConfirmed] BIT NOT NULL DEFAULT(0),
+	[PasswordHash] NVARCHAR(MAX) NULL,
+	[SecurityStamp] NVARCHAR(MAX) NULL,
+	[PhoneNumber] NVARCHAR(20) NULL,
+	[PhoneNumberConfirmed] BIT NOT NULL DEFAULT(0),
+	[TwoFactorEnabled] BIT NOT NULL DEFAULT(0),
+	[LockoutEndDateUtc] DATETIME NULL DEFAULT(GETDATE()),
+	[LockoutEnabled] BIT NOT NULL DEFAULT(0),
+	[AccessFailedCount] INT NOT NULL DEFAULT(0),
+	[DateCreate] DATETIME NULL DEFAULT(GETDATE()),
+	[BirthDate] DATETIME NULL,
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [CoY_UsersUserNameIndex] ON [dbo].CoY_Users ([UserName]) ON [PRIMARY]
+GO
+
+-- table CoY_UserRoles
+CREATE TABLE [dbo].[CoY_UserRoles]
+(
+	[UserId] INT NOT NULL FOREIGN KEY REFERENCES dbo.CoY_Users(Id),
+	[RoleId] INT NOT NULL FOREIGN KEY REFERENCES dbo.CoY_Roles(Id),
+	[DateCreate] DATETIME NULL DEFAULT(GETDATE())
+	PRIMARY KEY(RoleId, UserId)
+)
+GO
+
+-- table CoY_UserLogins
+CREATE TABLE [dbo].[CoY_UserLogins]
+(
+	[Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[LoginProvider] NVARCHAR(256) NOT NULL UNIQUE,
+	[ProviderKey] NVARCHAR(256) NOT NULL UNIQUE,
+	[UserId] INT NOT NULL UNIQUE FOREIGN KEY REFERENCES dbo.CoY_Users(Id),
+	[DateCreate] DATETIME NULL DEFAULT(GETDATE())
+)
+GO
+
+-- table CoY_UserClaims
+CREATE TABLE [dbo].[CoY_UserClaims]
+(
+	[Id] [int] NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+	[UserId] INT NOT NULL FOREIGN KEY REFERENCES dbo.CoY_Users(Id),
+	[ClaimType] NVARCHAR(MAX) NULL,
+	[ClaimValue] NVARCHAR(MAX) NULL,
+	[DateCreate] DATETIME NULL DEFAULT(GETDATE())
+)
+GO
+
+-- table SYSLog
+CREATE TABLE [dbo].[SYSLog]
+(
+	[Id] INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+	[DateCreated] DATETIME NULL DEFAULT(GETDATE()),
+	[LogMessage] NTEXT NULL,
+	[LogExeption] NTEXT NULL,
+	[StackTrace] NTEXT NULL,
+	[Provider] NTEXT NULL,
+	[TargetName] NVARCHAR(256) NULL,
+	[UserID] NTEXT NULL,
+	[Location] NTEXT NULL,
+	[Type] INT NULL
+)
+GO
+
+SELECT * FROM dbo.CoY_Users
+SELECT * FROM dbo.CoY_Roles
+SELECT * FROM dbo.CoY_UserRoles
+SELECT * FROM dbo.CoY_UserLogins
+SELECT * FROM dbo.CoY_UserClaims

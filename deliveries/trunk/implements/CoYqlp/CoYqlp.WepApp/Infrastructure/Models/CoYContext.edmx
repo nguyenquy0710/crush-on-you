@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CoYDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CoY_Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="DateCreate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CoY_UserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+          <Property Name="DateCreate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CoY_UserLogins">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="DateCreate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CoY_UserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="DateCreate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CoY_Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="DateCreate" Type="datetime" />
+          <Property Name="BirthDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SYSLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LogMessage" Type="ntext" />
+          <Property Name="LogExeption" Type="ntext" />
+          <Property Name="StackTrace" Type="ntext" />
+          <Property Name="Provider" Type="ntext" />
+          <Property Name="TargetName" Type="nvarchar" MaxLength="256" />
+          <Property Name="UserID" Type="ntext" />
+          <Property Name="Location" Type="ntext" />
+          <Property Name="Type" Type="int" />
+        </EntityType>
+        <Association Name="FK__CoY_UserC__UserI__276EDEB3">
+          <End Role="CoY_Users" Type="Self.CoY_Users" Multiplicity="1" />
+          <End Role="CoY_UserClaims" Type="Self.CoY_UserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoY_Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoY_UserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CoY_UserL__UserI__239E4DCF">
+          <End Role="CoY_Users" Type="Self.CoY_Users" Multiplicity="1" />
+          <End Role="CoY_UserLogins" Type="Self.CoY_UserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoY_Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoY_UserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CoY_UserR__RoleI__1CF15040">
+          <End Role="CoY_Roles" Type="Self.CoY_Roles" Multiplicity="1" />
+          <End Role="CoY_UserRoles" Type="Self.CoY_UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoY_Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoY_UserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CoY_UserR__UserI__1BFD2C07">
+          <End Role="CoY_Users" Type="Self.CoY_Users" Multiplicity="1" />
+          <End Role="CoY_UserRoles" Type="Self.CoY_UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoY_Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoY_UserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CoYDBModelStoreContainer">
+          <EntitySet Name="CoY_Roles" EntityType="Self.CoY_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoY_UserClaims" EntityType="Self.CoY_UserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoY_UserLogins" EntityType="Self.CoY_UserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoY_UserRoles" EntityType="Self.CoY_UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoY_Users" EntityType="Self.CoY_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SYSLog" EntityType="Self.SYSLog" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CoY_UserC__UserI__276EDEB3" Association="Self.FK__CoY_UserC__UserI__276EDEB3">
+            <End Role="CoY_Users" EntitySet="CoY_Users" />
+            <End Role="CoY_UserClaims" EntitySet="CoY_UserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CoY_UserL__UserI__239E4DCF" Association="Self.FK__CoY_UserL__UserI__239E4DCF">
+            <End Role="CoY_Users" EntitySet="CoY_Users" />
+            <End Role="CoY_UserLogins" EntitySet="CoY_UserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CoY_UserR__RoleI__1CF15040" Association="Self.FK__CoY_UserR__RoleI__1CF15040">
+            <End Role="CoY_Roles" EntitySet="CoY_Roles" />
+            <End Role="CoY_UserRoles" EntitySet="CoY_UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CoY_UserR__UserI__1BFD2C07" Association="Self.FK__CoY_UserR__UserI__1BFD2C07">
+            <End Role="CoY_Users" EntitySet="CoY_Users" />
+            <End Role="CoY_UserRoles" EntitySet="CoY_UserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CoYDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CoY_Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateCreate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoY_UserRoles" Relationship="Self.FK__CoY_UserR__RoleI__1CF15040" FromRole="CoY_Roles" ToRole="CoY_UserRoles" />
+        </EntityType>
+        <EntityType Name="CoY_UserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoY_Users" Relationship="Self.FK__CoY_UserC__UserI__276EDEB3" FromRole="CoY_UserClaims" ToRole="CoY_Users" />
+        </EntityType>
+        <EntityType Name="CoY_UserLogins">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginProvider" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="DateCreate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoY_Users" Relationship="Self.FK__CoY_UserL__UserI__239E4DCF" FromRole="CoY_UserLogins" ToRole="CoY_Users" />
+        </EntityType>
+        <EntityType Name="CoY_UserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="DateCreate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoY_Roles" Relationship="Self.FK__CoY_UserR__RoleI__1CF15040" FromRole="CoY_UserRoles" ToRole="CoY_Roles" />
+          <NavigationProperty Name="CoY_Users" Relationship="Self.FK__CoY_UserR__UserI__1BFD2C07" FromRole="CoY_UserRoles" ToRole="CoY_Users" />
+        </EntityType>
+        <EntityType Name="CoY_Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="DateCreate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoY_UserClaims" Relationship="Self.FK__CoY_UserC__UserI__276EDEB3" FromRole="CoY_Users" ToRole="CoY_UserClaims" />
+          <NavigationProperty Name="CoY_UserLogins" Relationship="Self.FK__CoY_UserL__UserI__239E4DCF" FromRole="CoY_Users" ToRole="CoY_UserLogins" />
+          <NavigationProperty Name="CoY_UserRoles" Relationship="Self.FK__CoY_UserR__UserI__1BFD2C07" FromRole="CoY_Users" ToRole="CoY_UserRoles" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK__CoY_UserR__RoleI__1CF15040">
+          <End Role="CoY_Roles" Type="Self.CoY_Roles" Multiplicity="1" />
+          <End Role="CoY_UserRoles" Type="Self.CoY_UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoY_Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoY_UserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CoY_UserC__UserI__276EDEB3">
+          <End Role="CoY_Users" Type="Self.CoY_Users" Multiplicity="1" />
+          <End Role="CoY_UserClaims" Type="Self.CoY_UserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoY_Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoY_UserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CoY_UserL__UserI__239E4DCF">
+          <End Role="CoY_Users" Type="Self.CoY_Users" Multiplicity="1" />
+          <End Role="CoY_UserLogins" Type="Self.CoY_UserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoY_Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoY_UserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CoY_UserR__UserI__1BFD2C07">
+          <End Role="CoY_Users" Type="Self.CoY_Users" Multiplicity="1" />
+          <End Role="CoY_UserRoles" Type="Self.CoY_UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoY_Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoY_UserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CoYDBConnection" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CoY_Roles" EntityType="Self.CoY_Roles" />
+          <EntitySet Name="CoY_UserClaims" EntityType="Self.CoY_UserClaims" />
+          <EntitySet Name="CoY_UserLogins" EntityType="Self.CoY_UserLogins" />
+          <EntitySet Name="CoY_UserRoles" EntityType="Self.CoY_UserRoles" />
+          <EntitySet Name="CoY_Users" EntityType="Self.CoY_Users" />
+          <AssociationSet Name="FK__CoY_UserR__RoleI__1CF15040" Association="Self.FK__CoY_UserR__RoleI__1CF15040">
+            <End Role="CoY_Roles" EntitySet="CoY_Roles" />
+            <End Role="CoY_UserRoles" EntitySet="CoY_UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CoY_UserC__UserI__276EDEB3" Association="Self.FK__CoY_UserC__UserI__276EDEB3">
+            <End Role="CoY_Users" EntitySet="CoY_Users" />
+            <End Role="CoY_UserClaims" EntitySet="CoY_UserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CoY_UserL__UserI__239E4DCF" Association="Self.FK__CoY_UserL__UserI__239E4DCF">
+            <End Role="CoY_Users" EntitySet="CoY_Users" />
+            <End Role="CoY_UserLogins" EntitySet="CoY_UserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CoY_UserR__UserI__1BFD2C07" Association="Self.FK__CoY_UserR__UserI__1BFD2C07">
+            <End Role="CoY_Users" EntitySet="CoY_Users" />
+            <End Role="CoY_UserRoles" EntitySet="CoY_UserRoles" />
+          </AssociationSet>
+          <EntitySet Name="SYSLogs" EntityType="CoYDBModel.SYSLog" />
+        </EntityContainer>
+        <EntityType Name="SYSLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LogMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LogExeption" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Provider" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TargetName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CoYDBModelStoreContainer" CdmEntityContainer="CoYDBConnection">
+          <EntitySetMapping Name="CoY_Roles">
+            <EntityTypeMapping TypeName="CoYDBModel.CoY_Roles">
+              <MappingFragment StoreEntitySet="CoY_Roles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoY_UserClaims">
+            <EntityTypeMapping TypeName="CoYDBModel.CoY_UserClaims">
+              <MappingFragment StoreEntitySet="CoY_UserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoY_UserLogins">
+            <EntityTypeMapping TypeName="CoYDBModel.CoY_UserLogins">
+              <MappingFragment StoreEntitySet="CoY_UserLogins">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoY_UserRoles">
+            <EntityTypeMapping TypeName="CoYDBModel.CoY_UserRoles">
+              <MappingFragment StoreEntitySet="CoY_UserRoles">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoY_Users">
+            <EntityTypeMapping TypeName="CoYDBModel.CoY_Users">
+              <MappingFragment StoreEntitySet="CoY_Users">
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYSLogs">
+            <EntityTypeMapping TypeName="CoYDBModel.SYSLog">
+              <MappingFragment StoreEntitySet="SYSLog">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="TargetName" ColumnName="TargetName" />
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="LogExeption" ColumnName="LogExeption" />
+                <ScalarProperty Name="LogMessage" ColumnName="LogMessage" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

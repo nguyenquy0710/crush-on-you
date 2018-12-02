@@ -45,10 +45,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BrockAllen.IdentityReboot, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BrockAllen.IdentityReboot.2.0.0\lib\net45\BrockAllen.IdentityReboot.dll</HintPath>
+    </Reference>
+    <Reference Include="BrockAllen.IdentityReboot.Ef, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BrockAllen.IdentityReboot.Ef.2.0.0\lib\net45\BrockAllen.IdentityReboot.Ef.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -173,19 +185,243 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Connected Services\eSMSvn\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Extensions\Controllers\ControllerExtensions.cs" />
+    <Compile Include="Extensions\Language\MultiLanguageAttribute.cs" />
+    <Compile Include="Extensions\Session\Session.cs" />
+    <Compile Include="Extensions\View\EmailHelperExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\GenerateKeyHelpers.cs" />
+    <Compile Include="Helpers\ImageHelpers.cs" />
+    <Compile Include="Helpers\IOHelpers.cs" />
+    <Compile Include="Helpers\NetworkHelpers.cs" />
+    <Compile Include="Helpers\SYSLogHelpers.cs" />
+    <Compile Include="Infrastructure\IdentityModels\CoYRole.cs" />
+    <Compile Include="Infrastructure\IdentityModels\CoYUser.cs" />
+    <Compile Include="Infrastructure\IdentityModels\CoYUserClaim.cs" />
+    <Compile Include="Infrastructure\IdentityModels\CoYUserLogin.cs" />
+    <Compile Include="Infrastructure\IdentityModels\CoYUserRole.cs" />
+    <Compile Include="Infrastructure\Models\CoYContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoYContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Models\CoYContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoYContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Models\CoYContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoYContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Models\CoY_Roles.cs">
+      <DependentUpon>CoYContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Models\CoY_UserClaims.cs">
+      <DependentUpon>CoYContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Models\CoY_UserLogins.cs">
+      <DependentUpon>CoYContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Models\CoY_UserRoles.cs">
+      <DependentUpon>CoYContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Models\CoY_Users.cs">
+      <DependentUpon>CoYContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Models\SYSLog.cs">
+      <DependentUpon>CoYContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Theme\favicon.ico" />
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.ActiveUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.AddNewGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.CancelSMSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.ChargeByMobileCardResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.CloneBrandnameProcessResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.CloneGetSentStatusDetailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.CloneSendBulkSMSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.CloneSendBulkSMSXResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.CloneSendIndividualSMSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.CPRequestResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.GetBrandnameListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.GetBrandnameStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.GetCustomerByGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.GetCustomerByPhoneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.GetGroupListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.GetMemberInfomationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.GetSendStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.GetSmsReceiverStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.GetSmsReceiverStatus_getResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.GetSmsReceiverStatus_V2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.GetSmsSentDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.GetSmsStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.HubspotSMSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.InternationalSmsResponseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.ReceiveBankingSMSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.ResetSwitchForeverSMSNhanhResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.SendBrandnameSMSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.SendMultipleEmailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.SendMultipleEmailv2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.SendMultipleMessageBrandnameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.SendMultipleMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.SendMultipleMessage_V2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.SendMultipleMessage_V2_getResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.SendMultipleMessage_V4Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.SendMultipleMessage_V4_getResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.SendMultipleMessage_V4_postResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.SendMultipleMessage_V4_post_jsonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.SendMultipleSMSBrandnameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.SendMultipleSMS_v3Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.SendTmpDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.SendViettelApiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.SendViettelSingleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.SendViettelTestResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.SignUpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.SignUpTeraappResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.TestMemcachedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.updatesmsstatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.VerifyCallResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.WaitThenReturnStringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\eSMSvn\CoYqlp.WepApp.eSMSvn.WebCall_postResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="App_Code\RenderPlugin.cshtml" />
+    <Content Include="AppSettings.config" />
+    <None Include="Connected Services\eSMSvn\MainService.disco" />
+    <None Include="Connected Services\eSMSvn\configuration91.svcinfo" />
+    <None Include="Connected Services\eSMSvn\configuration.svcinfo" />
+    <None Include="Connected Services\eSMSvn\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -194,9 +430,53 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Infrastructure\Models\CoYContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CoYContext.edmx</DependentUpon>
+      <LastGenOutput>CoYContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Infrastructure\Models\CoYContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CoYContext.edmx</DependentUpon>
+      <LastGenOutput>CoYContext.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Connected Services\eSMSvn\MainService.wsdl" />
+    <None Include="Connected Services\eSMSvn\MainService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\eSMSvn\MainService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\eSMSvn\MainService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\eSMSvn\MainService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\eSMSvn\MainService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\eSMSvn\MainService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\eSMSvn\MainService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Infrastructure\Models\CoYContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CoYContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Infrastructure\Models\CoYContext.edmx.diagram">
+      <DependentUpon>CoYContext.edmx</DependentUpon>
+    </Content>
+    <Content Include="Log4Net.config" />
     <None Include="Properties\PublishProfiles\LocalCoYqlp.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -208,7 +488,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -242,9 +524,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\Theme\Avatar\" />
+    <Folder Include="Assets\Theme\Slidebar\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -259,9 +544,30 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\eSMSvn\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Assets\Theme\favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

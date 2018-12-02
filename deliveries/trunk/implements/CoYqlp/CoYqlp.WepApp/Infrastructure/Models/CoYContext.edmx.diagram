@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="44fb7625977d4f1587c866d08dac7d08" Name="Diagram1">
+        <EntityTypeShape EntityType="CoYDBModel.CoY_Roles" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoYDBModel.CoY_UserClaims" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoYDBModel.CoY_UserLogins" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoYDBModel.CoY_UserRoles" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoYDBModel.CoY_Users" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <AssociationConnector Association="CoYDBModel.FK__CoY_UserR__RoleI__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="CoYDBModel.FK__CoY_UserC__UserI__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="CoYDBModel.FK__CoY_UserL__UserI__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="CoYDBModel.FK__CoY_UserR__UserI__1BFD2C07" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CoYDBModel.SYSLog" Width="1.5" PointX="6.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

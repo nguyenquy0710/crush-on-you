@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using CoYqlp.WepApp.Models;
+using CoYqlp.WepApp.Infrastructure.IdentityModels;
+using System.Web;
 
 namespace CoYqlp.WepApp
 {
@@ -31,12 +33,14 @@ namespace CoYqlp.WepApp
                 {
                     // Enables the application to validate the security stamp when the user logs in.
                     // This is a security feature which is used when you change a password or add an external login to your account.  
-                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
+                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, CoYUser, int>(
                         validateInterval: TimeSpan.FromMinutes(30),
-                        regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
+                        regenerateIdentityCallback: (manager, user) => user.GenerateUserIdentityAsync(manager), getUserIdCallback: (id) => (Int32.Parse(id.GetUserId()))
+                        )
                 },
                 CookieName = "CoY.CookieVN",
-                CookiePath = "/"
+                CookiePath = "/",
+                ExpireTimeSpan = TimeSpan.FromMinutes(30)
             });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 

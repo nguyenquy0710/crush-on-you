@@ -1,0 +1,52 @@
+﻿
+@helper FaceBookLikeAndShare(string articleHref)
+{
+    <div class="fb-like" data-href="@articleHref" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true">
+
+    </div>
+}
+
+@helper FaceBookComment(string articleHref)
+{
+    <div class="fb-comments" data-href="@articleHref" data-width="100%" data-numposts="5">
+
+    </div>
+}
+
+@helper FacebookPixel()
+{
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1273287776096843');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1"
+             src="https://www.facebook.com/tr?id=1273287776096843&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+}
+
+@helper FacebookMetaSeo(string image = null, string description = null)
+{
+    if (image != null)
+    {
+        <meta property="og:image" content="@image" />
+    }
+
+    if (description != null)
+    {
+        <meta property="og:description" content="@description" />
+    }
+}
