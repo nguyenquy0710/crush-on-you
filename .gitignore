@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/deliveries/trunk/implements/CoYqlp/.vs
+/deliveries/trunk/implements/CoYqlp/packages
+/deliveries/trunk/implements/CoYqlp/CoYqlp.WepApp/bin
+/deliveries/trunk/implements/CoYqlp/CoYqlp.WepApp/obj
+*.user
